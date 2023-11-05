@@ -1,4 +1,12 @@
 import logging
+import os  # Import the os module
+
+# Set the log file and log level
+log_file = os.path.join(os.path.dirname(__file__), 'your_log_file.log')  # Save log file in the script directory
+log_level = logging.DEBUG  # You can adjust this level as needed
+
+# Configure the logger
+logging.basicConfig(filename=log_file, level=log_level, format='%(asctime)s - %(levelname)s - %(message)s')
 
 from cassandra.cluster import Cluster
 from pyspark.sql import SparkSession
