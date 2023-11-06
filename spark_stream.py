@@ -1,10 +1,11 @@
 import logging
-
 from cassandra.cluster import Cluster
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType, StructField, StringType
 
+
+logging.basicConfig(level=logging.INFO)
 
 def create_keyspace(session):
     session.execute("""
@@ -74,7 +75,7 @@ def create_spark_connection():
             .config('spark.cassandra.connection.host', 'localhost') \
             .getOrCreate()
 
-        s_conn.sparkContext.setLogLevel("ERROR")
+        s_conn.sparkContext.setLogLevel("INFO")
         logging.info("Spark connection created successfully!")
     except Exception as e:
         logging.error(f"Couldn't create the spark session due to exception {e}")

@@ -8,6 +8,7 @@ log_level = logging.DEBUG  # You can adjust this level as needed
 # Configure the logger
 logging.basicConfig(filename=log_file, level=log_level, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# start code
 from cassandra.cluster import Cluster
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
@@ -138,7 +139,7 @@ def create_selection_df_from_kafka(spark_df):
 
     return sel
 
-
+# end code
 if __name__ == "__main__":
     # create spark connection
     spark_conn = create_spark_connection()
