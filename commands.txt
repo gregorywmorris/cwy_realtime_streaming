@@ -1,0 +1,12 @@
+docker
+
+$ docker-compose up -d 
+$ docker ps
+$ docker logs <host name>
+
+
+cassandra
+
+$ docker exec -it cassandra cqlsh -u cassandra -p cassandra localhost 9042
+$ describe spark_streams.created_users;
+$ select *  spark_streams.created_users;

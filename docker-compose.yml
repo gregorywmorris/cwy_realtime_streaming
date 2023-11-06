@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   zookeeper:
       image: confluentinc/cp-zookeeper:7.4.0
       hostname: zookeeper
@@ -107,6 +108,7 @@ services:
   webserver:
     image: apache/airflow:2.6.0-python3.9
     container_name: af-webserver
+    hostname: af-webserver
     command: webserver
     entrypoint: ['/opt/airflow/script/entrypoint.sh']
     depends_on:
@@ -216,6 +218,8 @@ services:
     environment:
       - MAX_HEAP_SIZE=512M
       - HEAP_NEWSIZE=100M
+    volumes:
+      - ./:/home
     networks:
       - confluent
 
